@@ -30,9 +30,9 @@ InputDecoration kTextFieldInputDecoration = InputDecoration(
   hoverColor: kRed,
   contentPadding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
   hintText: 'Password',
-  hintStyle: kRegularTextStyle.copyWith(color: kGreyText, fontSize: 18),
+  hintStyle: kRegularTextStyle.copyWith(color: kGreyText, fontSize: 16),
   border: OutlineInputBorder(
-    borderRadius: BorderRadius.circular(20),
+    borderRadius: BorderRadius.circular(16),
     borderSide: const BorderSide(
       width: 0,
       style: BorderStyle.none,

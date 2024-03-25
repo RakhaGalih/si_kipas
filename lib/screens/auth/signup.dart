@@ -6,10 +6,10 @@ class SignUp extends StatefulWidget {
   const SignUp({super.key});
 
   @override
-  State<SignUp> createState() => _LoginState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _LoginState extends State<SignUp> {
+class _SignUpState extends State<SignUp> {
   bool _isObscure = true;
   @override
   Widget build(BuildContext context) {
@@ -20,90 +20,62 @@ class _LoginState extends State<SignUp> {
         width: width,
         height: height,
         child: SingleChildScrollView(
-          child: SizedBox(
-            height: height,
-            width: width,
-            child: Column(
-              children: [
-                SafeArea(
-                  bottom: false,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 50),
-                    child: Image.asset('images/login.png'),
+            child: Container(
+          height: height,
+          width: width,
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('images/login-bg.png'), fit: BoxFit.cover)),
+          child: SafeArea(
+            child: Container(
+              width: double.maxFinite,
+              height: height,
+              padding: const EdgeInsets.symmetric(vertical: 45, horizontal: 30),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset('images/logo kipas.png'),
+                  const Spacer(),
+                  TextField(
+                    decoration:
+                        kTextFieldInputDecoration.copyWith(hintText: 'Email'),
                   ),
-                ),
-                Expanded(
-                  child: Container(
-                    width: double.maxFinite,
-                    height: height,
-                    color: kWhite,
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 45, horizontal: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        TextField(
-                          decoration: kTextFieldInputDecoration.copyWith(
-                              hintText: 'Email'),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        TextField(
-                          obscureText: _isObscure,
-                          decoration: kTextFieldInputDecoration.copyWith(
-                              suffixIcon: GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      _isObscure = !_isObscure;
-                                    });
-                                  },
-                                  child: Icon(
-                                    (_isObscure)
-                                        ? Icons.visibility
-                                        : Icons.visibility_off,
-                                    color: kGreyText,
-                                  ))),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        TextField(
-                          obscureText: _isObscure,
-                          decoration: kTextFieldInputDecoration.copyWith(
-                              hintText: 'Konfirmasi Password',
-                              suffixIcon: GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      _isObscure = !_isObscure;
-                                    });
-                                  },
-                                  child: Icon(
-                                    (_isObscure)
-                                        ? Icons.visibility
-                                        : Icons.visibility_off,
-                                    color: kGreyText,
-                                  ))),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        SecondaryButton(
-                            title: 'Sign Up',
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  TextField(
+                    obscureText: _isObscure,
+                    decoration: kTextFieldInputDecoration.copyWith(
+                        suffixIcon: GestureDetector(
                             onTap: () {
-                              Navigator.of(context).pop();
-                            })
-                      ],
-                    ),
+                              setState(() {
+                                _isObscure = !_isObscure;
+                              });
+                            },
+                            child: Icon(
+                              (_isObscure)
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: kGreyText,
+                            ))),
                   ),
-                ),
-              ],
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  MainButton(
+                      title: 'Daftar',
+                      isSecondary: true,
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignUp()));
+                      })
+                ],
+              ),
             ),
           ),
-        ),
+        )),
       ),
     );
   }

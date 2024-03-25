@@ -6,13 +6,13 @@ class MainButton extends StatelessWidget {
   final String title;
   final IconData? icon;
   final Function() onTap;
-  final Color color;
+  final bool isSecondary;
   const MainButton({
     Key? key,
     required this.title,
     this.icon,
     required this.onTap,
-    this.color = kRed,
+    this.isSecondary = false,
   }) : super(key: key);
 
   @override
@@ -22,9 +22,10 @@ class MainButton extends StatelessWidget {
         child: Container(
           alignment: Alignment.center,
           width: double.maxFinite,
-          height: 58,
+          padding: const EdgeInsets.symmetric(vertical: 16),
           decoration: BoxDecoration(
-              color: color, borderRadius: BorderRadius.circular(10)),
+              color: (isSecondary) ? kWhite : kRed,
+              borderRadius: BorderRadius.circular(16)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -38,50 +39,8 @@ class MainButton extends StatelessWidget {
                 ),
               Text(
                 title,
-                style: kSemiBoldTextStyle.copyWith(color: kWhite, fontSize: 20),
-              ),
-            ],
-          ),
-        ));
-  }
-}
-
-class SecondaryButton extends StatelessWidget {
-  final String title;
-  final IconData? icon;
-  final Function() onTap;
-  const SecondaryButton({
-    Key? key,
-    required this.title,
-    this.icon,
-    required this.onTap,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-        onTap: onTap,
-        child: Container(
-          alignment: Alignment.center,
-          width: double.maxFinite,
-          height: 58,
-          decoration: BoxDecoration(
-              border: Border.all(width: 2, color: kRed),
-              borderRadius: BorderRadius.circular(10)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              if (icon != null)
-                Padding(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: Icon(
-                    icon,
-                    color: kRed,
-                  ),
-                ),
-              Text(
-                title,
-                style: kSemiBoldTextStyle.copyWith(color: kRed, fontSize: 20),
+                style: kSemiBoldTextStyle.copyWith(
+                    color: (isSecondary) ? kRed : kWhite, fontSize: 16),
               ),
             ],
           ),

@@ -22,107 +22,74 @@ class _LoginState extends State<Login> {
         width: width,
         height: height,
         child: SingleChildScrollView(
-          child: SizedBox(
-            height: height,
-            width: width,
-            child: Column(
-              children: [
-                SafeArea(
-                  bottom: false,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 50),
-                    child: Image.asset('images/login.png'),
+            child: Container(
+          height: height,
+          width: width,
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('images/login-bg.png'), fit: BoxFit.cover)),
+          child: SafeArea(
+            child: Container(
+              width: double.maxFinite,
+              height: height,
+              padding: const EdgeInsets.symmetric(vertical: 45, horizontal: 30),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset('images/logo kipas.png'),
+                  const Spacer(),
+                  TextField(
+                    decoration:
+                        kTextFieldInputDecoration.copyWith(hintText: 'Email'),
                   ),
-                ),
-                Expanded(
-                  child: Container(
-                    width: double.maxFinite,
-                    height: height,
-                    color: kWhite,
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 45, horizontal: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        TextField(
-                          decoration: kTextFieldInputDecoration.copyWith(
-                              hintText: 'Email'),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        TextField(
-                          obscureText: _isObscure,
-                          decoration: kTextFieldInputDecoration.copyWith(
-                              suffixIcon: GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      _isObscure = !_isObscure;
-                                    });
-                                  },
-                                  child: Icon(
-                                    (_isObscure)
-                                        ? Icons.visibility
-                                        : Icons.visibility_off,
-                                    color: kGreyText,
-                                  ))),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        MainButton(
-                          title: 'Sign In',
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const Home()));
-                          },
-                        ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.pushReplacementNamed(context, '/signIn');
-                          },
-                          child: Text(
-                            'Lupa password',
-                            style: kMediumTextStyle.copyWith(
-                                decoration: TextDecoration.underline,
-                                decorationColor: kRed,
-                                fontSize: 14,
-                                color: kRed),
-                          ),
-                        ),
-                        const Spacer(),
-                        Text(
-                          'Belum punya akun?',
-                          style: kMediumTextStyle.copyWith(
-                              fontSize: 14, color: kGreyText),
-                        ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        SecondaryButton(
-                            title: 'Sign Up',
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  TextField(
+                    obscureText: _isObscure,
+                    decoration: kTextFieldInputDecoration.copyWith(
+                        suffixIcon: GestureDetector(
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const SignUp()));
-                            })
-                      ],
-                    ),
+                              setState(() {
+                                _isObscure = !_isObscure;
+                              });
+                            },
+                            child: Icon(
+                              (_isObscure)
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: kGreyText,
+                            ))),
                   ),
-                ),
-              ],
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  MainButton(
+                    title: 'Masuk',
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Home()));
+                    },
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  MainButton(
+                      title: 'Daftar',
+                      isSecondary: true,
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignUp()));
+                      })
+                ],
+              ),
             ),
           ),
-        ),
+        )),
       ),
     );
   }

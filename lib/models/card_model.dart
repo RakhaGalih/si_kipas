@@ -3,7 +3,7 @@ class ModelCard {
   final String? image;
   final String title;
   final String deskripsi;
-  final List<Kategori>? kategori;
+  final List<Kategori> kategori;
   final String? jam;
   final String panggilanLokasi;
   final String? lokasi;
@@ -15,7 +15,7 @@ class ModelCard {
       this.image,
       required this.title,
       required this.deskripsi,
-      this.kategori,
+      required this.kategori,
       this.jam,
       this.lokasi,
       this.mapLink,
