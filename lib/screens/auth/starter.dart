@@ -3,15 +3,9 @@ import 'package:si_kipas/constant.dart';
 import 'package:si_kipas/screens/auth/login.dart';
 import 'package:si_kipas/widgets/button.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+class Starter extends StatelessWidget {
+  const Starter({super.key});
 
-  @override
-  State<SignUp> createState() => _SignUpState();
-}
-
-class _SignUpState extends State<SignUp> {
-  bool _isObscure = true;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -33,39 +27,25 @@ class _SignUpState extends State<SignUp> {
               height: height,
               padding: const EdgeInsets.symmetric(vertical: 45, horizontal: 30),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset('images/logo kipas.png'),
+                  Center(child: Image.asset('images/logo kipas.png')),
                   const Spacer(),
-                  TextField(
-                    decoration:
-                        kTextFieldInputDecoration.copyWith(hintText: 'Email'),
+                  Text(
+                    'Jelajahi',
+                    style:
+                        kMediumTextStyle.copyWith(fontSize: 24, color: kWhite),
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  TextField(
-                    obscureText: _isObscure,
-                    decoration: kTextFieldInputDecoration.copyWith(
-                        suffixIcon: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                _isObscure = !_isObscure;
-                              });
-                            },
-                            child: Icon(
-                              (_isObscure)
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
-                              color: kGreyText,
-                            ))),
+                  Text(
+                    'Berbagai\nTempat\nMenarik',
+                    style:
+                        kMediumTextStyle.copyWith(fontSize: 40, color: kWhite),
                   ),
                   const SizedBox(
                     height: 20,
                   ),
                   MainButton(
-                      title: 'Daftar',
-                      isSecondary: true,
+                      title: 'Mulai',
                       onTap: () {
                         Navigator.push(
                             context,

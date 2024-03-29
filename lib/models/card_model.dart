@@ -1,4 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:si_kipas/models/fasilitas_model.dart';
+
 class ModelCard {
   final String? image;
   final String title;
@@ -25,19 +26,6 @@ class ModelCard {
   void toggleFavorite() {
     isFavorite = !isFavorite;
   }
-}
-
-enum Fasilitas {
-  makan,
-  tempatSantai,
-  snorkeling,
-  toilet,
-  masjid,
-  penginapan,
-  tokoOlehOleh,
-  parkir,
-  kapal,
-  tenda
 }
 
 enum Kategori { populer, view, kuliner, seniBudaya, sejarah }

@@ -11,7 +11,16 @@ const kGradientRed =
   Color(0xFFFAFAFA),
 ]);
 const kWhite = Color(0xFFFAFAFA);
+const kGreen = Color(0xFF81D4A3);
+const kLightGreen = Color(0xFFB9E177);
+const kLightBlue = Color(0xFF77E1E1);
+const kBlue = Color(0xFF8DBCE8);
+const kGreyBlue = Color(0xFFA8BAC5);
+const kPurple = Color(0xFF9F8DE8);
+const kMagenta = Color(0xFFEA8EE1);
 const kRed = Color(0xFFEB5757);
+const kOrange = Color(0xFFFFC187);
+const kYellow = Color(0xFFD4CC81);
 const kGreyText = Color(0xFFABABAB);
 const kGrey = Color(0xFFF0F0F0);
 const kIndigo = Color(0xFF0E185F);

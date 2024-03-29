@@ -1,10 +1,13 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:si_kipas/constant.dart';
 import 'package:si_kipas/models/data_model.dart';
+import 'package:si_kipas/models/navcard_model.dart';
 import 'package:si_kipas/screens/home/favorit.dart';
 import 'package:si_kipas/screens/home/homepage.dart';
 import 'package:si_kipas/screens/home/kategori.dart';
+import 'package:si_kipas/widgets/navbar_icon.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -16,31 +19,46 @@ class Home extends StatelessWidget {
       KategoriScreen(),
       Favorite()
     ];
+    List<NavIcon> navIcons = [
+      const NavIcon(
+          icon: FluentIcons.apps_20_regular,
+          activeIcon: FluentIcons.apps_20_filled,
+          color: kRed),
+      const NavIcon(
+          icon: FluentIcons.apps_list_20_regular,
+          activeIcon: FluentIcons.apps_list_20_filled,
+          color: kRed),
+      const NavIcon(
+          icon: FluentIcons.heart_20_regular,
+          activeIcon: FluentIcons.heart_20_filled,
+          color: kRed),
+    ];
     return Scaffold(
       body: widgetOptions
           .elementAt(Provider.of<DataModel>(context).selectedKategoriIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: 'Home',
+      bottomNavigationBar: Material(
+        color: kGrey,
+        child: InkWell(
+          onTap: () {},
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(20, 30, 20, 10),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: List.generate(
+                      navIcons.length,
+                      (index) => NavBarIcon(
+                            isActive: Provider.of<DataModel>(context)
+                                    .selectedNavBar ==
+                                index,
+                            index: index,
+                            color: navIcons[index].color,
+                            icon: navIcons[index].icon,
+                            activeIcon: navIcons[index].activeIcon!,
+                          ))),
+            ),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.backpack),
-            label: 'Kategori',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_outline),
-            label: 'Favorit',
-          ),
-        ],
-        backgroundColor: kWhite,
-        currentIndex: Provider.of<DataModel>(context).selectedKategoriIndex,
-        selectedItemColor: kRed,
-        selectedIconTheme: const IconThemeData(fill: 1),
-        onTap: (index) {
-          Provider.of<DataModel>(context, listen: false).onItemTapped(index);
-        },
+        ),
       ),
     );
   }

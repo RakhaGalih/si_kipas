@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:si_kipas/constant.dart';
 import 'package:si_kipas/models/card_model.dart';
@@ -25,21 +26,23 @@ class MyCard extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (i) => DetailCard(
-                index: index,
+                data: data,
                 card: card,
               ),
             ));
       },
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(16),
         child: Stack(
           children: [
             Container(
                 decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: kGrey),
-                    image: const DecorationImage(
-                        image: AssetImage('images/login.png'))),
+                  color: Colors.white,
+                  border: Border.all(color: kGrey),
+                  image: DecorationImage(
+                      image: AssetImage(card.image ?? 'images/login-bg.png'),
+                      fit: BoxFit.cover),
+                ),
                 child: Stack(
                   children: [
                     Container(
@@ -64,24 +67,25 @@ class MyCard extends StatelessWidget {
                         child: Container(
                             padding: const EdgeInsets.all(10),
                             decoration: const BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(12)),
-                                color: kRed),
+                              color: kRed,
+                              borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(16)),
+                            ),
                             child: (card.isFavorite)
                                 ? const Icon(
-                                    Icons.favorite,
+                                    FluentIcons.heart_24_filled,
                                     color: kGrey,
                                     size: 27,
                                   )
                                 : const Icon(
-                                    Icons.favorite_outline,
+                                    FluentIcons.heart_24_regular,
                                     color: kGrey,
                                     size: 27,
                                   )),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(12),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -92,21 +96,21 @@ class MyCard extends StatelessWidget {
                                 color: kWhite, fontSize: 15),
                           ),
                           const SizedBox(
-                            height: 3,
+                            height: 7,
                           ),
                           Row(
                             children: [
                               const Icon(
-                                Icons.location_on,
-                                color: kGrey,
-                                size: 12,
+                                FluentIcons.location_12_filled,
+                                color: kRed,
+                                size: 15,
                               ),
                               const SizedBox(
                                 width: 5,
                               ),
                               Expanded(
                                 child: Text(
-                                  card.deskripsi,
+                                  card.panggilanLokasi,
                                   overflow: TextOverflow.ellipsis,
                                   style: kRegularTextStyle.copyWith(
                                       color: kWhite, fontSize: 13),

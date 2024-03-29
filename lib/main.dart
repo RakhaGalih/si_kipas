@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:si_kipas/models/data_model.dart';
-import 'package:si_kipas/screens/auth/login.dart';
+import 'package:si_kipas/screens/auth/starter.dart';
 
 void main() {
+  DataModel data = DataModel();
+  data.loadFavoriteStatus();
   runApp(const MainApp());
 }
 
@@ -19,7 +21,7 @@ class MainApp extends StatelessWidget {
               fontFamily: "Poppins",
               primarySwatch: Colors.teal,
               primaryColor: Colors.teal),
-          home: const Login()),
+          home: const Starter()),
     );
   }
 }
