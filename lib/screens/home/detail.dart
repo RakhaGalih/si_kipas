@@ -209,27 +209,57 @@ class DetailCard extends StatelessWidget {
                     ),
                   ],
                 ),
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Lokasi',
-                      style: kSemiBoldTextStyle.copyWith(fontSize: 18),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        _launchURL(card.mapLink!);
-                      },
-                      child: Text(
-                        'Show Map',
-                        style: kSemiBoldTextStyle.copyWith(fontSize: 18),
+              if (card.mapLink != null)
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Lokasi',
+                            style: kSemiBoldTextStyle.copyWith(fontSize: 18),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              _launchURL(card.mapLink!);
+                            },
+                            child: Text(
+                              'Show Map',
+                              style: kRegularTextStyle.copyWith(
+                                  fontSize: 14, color: const Color(0xFF1870F3)),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
-                ),
-              )
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        card.lokasi ?? card.panggilanLokasi,
+                        style: kRegularTextStyle.copyWith(fontSize: 14),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "Buka : ",
+                            style: kMediumTextStyle.copyWith(fontSize: 14),
+                          ),
+                          Text(
+                            card.jam ?? "-",
+                            style: kRegularTextStyle.copyWith(
+                                fontSize: 14, color: const Color(0xFF1870F3)),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                )
             ],
           ),
         ),
