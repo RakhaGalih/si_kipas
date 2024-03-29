@@ -3,10 +3,11 @@ class HomeCardModel {
   final String title;
   final String desc;
   final String image;
-
-  HomeCardModel(
+  final void Function() onTap;
+  const HomeCardModel(
     this.title,
     this.desc,
     this.image,
+    this.onTap,
   );
 }

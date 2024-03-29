@@ -14,11 +14,6 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const List<Widget> widgetOptions = <Widget>[
-      HomePage(),
-      KategoriScreen(),
-      Favorite()
-    ];
     List<NavIcon> navIcons = [
       const NavIcon(
           icon: FluentIcons.apps_20_regular,
@@ -33,33 +28,41 @@ class Home extends StatelessWidget {
           activeIcon: FluentIcons.heart_20_filled,
           color: kRed),
     ];
-    return Scaffold(
-      body: widgetOptions
-          .elementAt(Provider.of<DataModel>(context).selectedKategoriIndex),
-      bottomNavigationBar: Material(
-        color: kGrey,
-        child: InkWell(
-          onTap: () {},
-          child: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 30, 20, 10),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: List.generate(
-                      navIcons.length,
-                      (index) => NavBarIcon(
-                            isActive: Provider.of<DataModel>(context)
-                                    .selectedNavBar ==
-                                index,
-                            index: index,
-                            color: navIcons[index].color,
-                            icon: navIcons[index].icon,
-                            activeIcon: navIcons[index].activeIcon!,
-                          ))),
+    return Consumer<DataModel>(builder: (context, data, child) {
+      List<Widget> widgetOptions = <Widget>[
+        HomePage(
+          data: data,
+        ),
+        KategoriScreen(
+          data: data,
+        ),
+        Favorite(data: data)
+      ];
+      return Scaffold(
+        body: widgetOptions[data.selectedKategoriIndex],
+        bottomNavigationBar: Material(
+          color: kGrey,
+          child: InkWell(
+            onTap: () {},
+            child: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 30, 20, 10),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: List.generate(
+                        navIcons.length,
+                        (index) => NavBarIcon(
+                              isActive: data.selectedNavBar == index,
+                              index: index,
+                              color: navIcons[index].color,
+                              icon: navIcons[index].icon,
+                              activeIcon: navIcons[index].activeIcon!,
+                            ))),
+              ),
             ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

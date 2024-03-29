@@ -7,17 +7,20 @@ class HomeCard extends StatelessWidget {
   final String title;
   final String desc;
   final String image;
+  final void Function() onTap;
   const HomeCard({
     Key? key,
     required this.isRekomendasi,
     required this.title,
     required this.desc,
     required this.image,
+    required this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: onTap,
       child: Container(
         alignment: Alignment.bottomLeft,
         decoration: BoxDecoration(

@@ -314,11 +314,6 @@ class DataModel extends ChangeNotifier {
   int selectedFilter = 0;
   int selectedNavBar = 0;
 
-  void onItemTapped(int index) {
-    selectedKategoriIndex = index;
-    notifyListeners();
-  }
-
   void onFilterTapped(int index) {
     selectedFilter = index;
     notifyListeners();
@@ -326,6 +321,7 @@ class DataModel extends ChangeNotifier {
 
   void onNavBarTapped(int index) {
     selectedNavBar = index;
+    selectedKategoriIndex = index;
     notifyListeners();
   }
 }

@@ -24,7 +24,6 @@ class NavBarIcon extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Provider.of<DataModel>(context, listen: false).onNavBarTapped(index);
-        Provider.of<DataModel>(context, listen: false).onItemTapped(index);
       },
       child: Container(
         padding: const EdgeInsets.all(8),
