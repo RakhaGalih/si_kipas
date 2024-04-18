@@ -118,6 +118,7 @@ class DataModel extends ChangeNotifier {
       ],
     ),
     ModelCard(
+      image: 'images/negeridiatasawan.jpg',
       panggilanLokasi: 'Negeri Diatas Awan',
       title: 'Negeri Diatas Awan',
       mapLink: 'https://maps.app.goo.gl/pQaohzg7Hfb3uUVV9',
