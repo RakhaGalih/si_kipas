@@ -1,7 +1,7 @@
 # si_kipas
 🗺️ <b>"Si Kipas" - Your Tourism Information Catalog:</b>
 
-Discover the beauty of the South Sumatra West Coast with "Si Kipas" - your ultimate tourism companion. This app serves as a comprehensive catalog, storing valuable information about tourist attractions in the region.
+Discover the beauty of the southern coastal areas of West Sumatra with "Si Kipas" - your ultimate tourism companion. This app serves as a comprehensive catalog, storing valuable information about tourist attractions in the region.
 
 <br>
 
